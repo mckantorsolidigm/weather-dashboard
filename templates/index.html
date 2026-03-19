@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broomfield Weather</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌤️ Weather Dashboard</h1>
+            <p class="location">{{ location }}</p>
+        </header>
+
+        <div class="controls">
+            <button id="refreshBtn" class="btn btn-primary">🔄 Refresh Now</button>
+            <button id="changeLocationBtn" class="btn btn-secondary">📍 Change Location</button>
+            <button id="tempToggleBtn" class="btn btn-secondary">°F | °C</button>
+            <div class="last-update">
+                <span>Last updated: <span id="lastUpdate">Loading...</span></span>
+                <span class="auto-refresh-info">(Auto-refresh every hour)</span>
+            </div>
+        </div>
+
+        <!-- Location Change Modal -->
+        <div id="locationModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Change Location</h2>
+                <p>Enter city and state (e.g., "Denver, Colorado" or "New York, NY")</p>
+                <input type="text" id="locationInput" class="location-input" placeholder="City, State" autocomplete="off">
+                <button id="submitLocationBtn" class="btn btn-primary" style="margin-top: 10px; width: 100%;">Search</button>
+                <div id="locationError" class="error-message" style="display: none; margin-top: 10px; color: #d32f2f;"></div>
+            </div>
+        </div>
+
+        <!-- Alerts Section -->
+        <div id="alertsSection" class="alerts-section" style="display: none;">
+            <h2>⚠️ Weather Alerts</h2>
+            <div id="alertsList" class="alerts-list"></div>
+        </div>
+
+        <!-- Current Weather Section -->
+        <div class="weather-card current-weather">
+            <h2>Current Weather</h2>
+            <div class="weather-grid">
+                <div class="weather-item">
+                    <div class="weather-temp" id="currentTemp">--°F</div>
+                    <div class="weather-label">Temperature</div>
+                </div>
+                <div class="weather-item">
+                    <div class="weather-value" id="feelsLike">--°F</div>
+                    <div class="weather-label">Feels Like</div>
+                </div>
+                <div class="weather-item">
+                    <div class="weather-value" id="condition">--</div>
+                    <div class="weather-label">Condition</div>
+                </div>
+                <div class="weather-item">
+                    <div class="weather-value" id="humidity">--%</div>
+                    <div class="weather-label">Humidity</div>
+                </div>
+                <div class="weather-item">
+                    <div class="weather-value" id="windSpeed">-- mph</div>
+                    <div class="weather-label">Wind Speed</div>
+                </div>
+                <div class="weather-item">
+                    <div class="weather-value" id="windDir">--°</div>
+                    <div class="weather-label">Wind Direction</div>
+                </div>
+                <div class="weather-item">
+                    <div class="weather-value" id="precipitation">--%</div>
+                    <div class="weather-label">Precipitation</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Today's Forecast Section -->
+        <div class="weather-card forecast">
+            <h2>Today's Hourly Forecast</h2>
+            <div class="hourly-forecast" id="hourlyForecast">
+                <p>Loading hourly data...</p>
+            </div>
+        </div>
+
+        <!-- Extended Forecast Section -->
+        <div class="weather-card forecast">
+            <h2>7-Day Forecast</h2>
+            <div class="daily-forecast" id="dailyForecast">
+                <p>Loading forecast data...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

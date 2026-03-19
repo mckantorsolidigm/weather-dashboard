@@ -1,0 +1,133 @@
+===============================================
+WEATHER APP - SETUP INSTRUCTIONS
+===============================================
+
+Your weather application has been created! Follow these steps to get it running.
+
+STEP 1: FIX PYTHON ALIAS ISSUE (Windows)
+===============================================
+
+Your system has a Microsoft Store Python alias that's preventing the app from running.
+You have two options:
+
+OPTION A: Install Python from python.org (Recommended)
+---
+1. Go to https://python.org/downloads
+2. Download Python 3.11 or latest (Windows installer)
+3. During installation:
+   - CHECK "Add Python to PATH"
+   - CHECK "Install for all users" (if you have admin)
+4. Restart your terminal/VS Code
+5. Verify: Open PowerShell and type: python --version
+
+OPTION B: Remove Python Alias from Windows (Quick Fix)
+---
+1. Open Windows Settings (Win+I)
+2. Go to: Apps → Advanced app settings → App execution aliases
+3. Find "python.exe" and "python3.exe"
+4. TOGGLE THEM OFF (disable them)
+5. Restart your terminal/VS Code
+
+STEP 2: INSTALL DEPENDENCIES
+===============================================
+
+After fixing Python, open PowerShell in the project folder and run:
+
+    python -m pip install -r requirements.txt
+
+This installs:
+- Flask (web framework)
+- Requests (API calls)
+- Werkzeug (utilities)
+
+STEP 3: RUN THE APPLICATION
+===============================================
+
+In PowerShell, from the project folder, run:
+
+    python app.py
+
+You should see:
+    * Running on http://127.0.0.1:5000
+
+STEP 4: VIEW IN BROWSER
+===============================================
+
+Open your web browser and go to:
+    
+    http://127.0.0.1:5000
+
+You should see the weather dashboard with current conditions for Broomfield, CO!
+
+FEATURES AVAILABLE:
+  ✓ Current weather (temperature, humidity, wind)
+  ✓ 12-hour hourly forecast
+  ✓ 7-day extended forecast
+  ✓ Weather alerts from National Weather Service
+  ✓ Auto-refresh every hour
+  ✓ Manual refresh button
+
+TO STOP THE SERVER:
+  - Press Ctrl+C in PowerShell
+
+TROUBLESHOOTING
+===============================================
+
+Issue: "Python was not found"
+Solution: Run OPTION A or B from Step 1 above
+
+Issue: "ModuleNotFoundError: No module named 'flask'"
+Solution: Make sure you ran Step 2 (pip install -r requirements.txt)
+
+Issue: "Port 5000 already in use"
+Solution: Edit app.py, change port 5000 to 5001 (or another number)
+         Then restart: python app.py
+
+Issue: Weather not loading
+Solution: Check internet connection. APIs required:
+  - api.open-meteo.com (weather data)
+  - api.weather.gov (alerts)
+
+FEATURES EXPLAINED
+===============================================
+
+✓ Current Weather Widget
+  Shows temperature, feels-like, humidity, wind speed, precipitation chance
+
+✓ Hourly Forecast
+  Next 12 hours of weather with precipitation probability
+
+✓ 7-Day Forecast
+  Extended forecast with high/low temps and daily conditions
+
+✓ Weather Alerts
+  Real-time alerts from National Weather Service (only shown if active)
+
+✓ Auto-Refresh
+  Weather updates automatically every 60 minutes (runs in background)
+
+✓ Manual Refresh
+  Click "🔄 Refresh Now" button to get latest data immediately
+
+LOCATION
+===============================================
+
+Currently configured for: Broomfield, Colorado (39.9165, -104.9103)
+
+To change location, edit app.py and modify:
+  LATITUDE = 39.9165
+  LONGITUDE = -104.9103
+  LOCATION_NAME = "Broomfield, Colorado"
+
+NEXT STEPS
+===============================================
+
+1. Fix Python (if needed) - Step 1
+2. Install dependencies - Step 2
+3. Run the app - Step 3
+4. Open in browser - Step 4
+5. Enjoy your weather dashboard!
+
+For questions or issues, check the README.md file for more details.
+
+===============================================
