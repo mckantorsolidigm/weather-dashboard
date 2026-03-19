@@ -10,6 +10,8 @@ A real-time weather application for Broomfield, Colorado with hourly auto-refres
 - ⚠️ **Weather Alerts**: Real-time weather alerts from the National Weather Service
 - 🔄 **Auto-Refresh**: Weather data updates automatically every hour
 - 🖱️ **Manual Refresh**: Refresh weather data on demand with a button click
+- 📍 **Dynamic Location Selection**: Change location to any U.S. city with automatic fallback to state capitals
+- 🌡️ **Temperature Unit Toggle**: Switch between Fahrenheit and Celsius with persistent preference
 
 ## Technology Stack
 
@@ -22,7 +24,7 @@ A real-time weather application for Broomfield, Colorado with hourly auto-refres
 ## Installation
 
 ### Prerequisites
-- Python 3.7 or higher
+- Python 2.7.18 or higher (legacy Python support)
 - pip (Python package manager)
 
 ### Setup Steps
@@ -66,8 +68,9 @@ A real-time weather application for Broomfield, Colorado with hourly auto-refres
 
 - **Auto-Refresh**: The application automatically fetches updated weather data every 60 minutes (3600 seconds)
 - **Manual Refresh**: Click the "🔄 Refresh Now" button to get the latest weather data immediately
-- **Weather Alerts**: Alerts are fetched from the National Weather Service for the Broomfield area
-- **Temperature Unit**: All temperatures are displayed in Fahrenheit
+- **Weather Alerts**: Alerts are fetched from the National Weather Service for the selected location
+- **Location Selection**: Click the "📍 Change Location" button to select a different U.S. city. The app uses geocoding to find the location, with automatic fallback to state capitals if needed
+- **Temperature Unit Toggle**: Click the "°F/°C" button to switch between Fahrenheit and Celsius. Your preference is saved automatically
 - **Wind Speed**: Wind speeds are shown in miles per hour (mph)
 
 ## Project Structure
@@ -91,6 +94,7 @@ Weather app/
 - **GET `/`** - Serve the main dashboard page
 - **GET `/api/weather`** - Return current weather data (JSON)
 - **GET `/api/refresh`** - Manually refresh weather data (JSON)
+- **POST `/api/set-location`** - Set a new location with city and state (JSON)
 
 ## Dependencies
 
